@@ -10,6 +10,7 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private int treasure;
 
     //Constructor
     /**
@@ -21,6 +22,7 @@ public class Town
     {
         this.shop = shop;
         this.terrain = getNewTerrain();
+        this.treasure = 1;
 
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
@@ -37,12 +39,17 @@ public class Town
         return printMessage;
     }
 
+    public int getTreasure(){
+        return treasure;
+    }
+
     /**
      * Assigns an object to the Hunter in town.
      * @param h The arriving Hunter.
      */
     public void hunterArrives(Hunter hunter)
     {
+        treasure = 1;
         this.hunter = hunter;
         printMessage = "Welcome to town, " + hunter.getHunterName() + ".";
 
@@ -122,6 +129,24 @@ public class Town
                 printMessage += "\nYou lost the brawl and pay " +  goldDiff + " gold.";
                 hunter.changeGold(-1 * goldDiff);
             }
+        }
+    }
+
+    public void huntForTreasure(){
+        int noTreasureChance = (int) (Math.random() * 3) + 1;
+        if (noTreasureChance == 1 && treasure == 1){
+
+            treasure = treasure - 1;
+        }
+        else if (noTreasureChance == 2 && treasure == 1){
+            treasure = treasure - 1;
+
+        }
+        else if (noTreasureChance == 3 && treasure == 1){
+            printMessage = "You couldn't find any trouble";
+        }
+        else if (treasure == 0){
+            printMessage = "You must leave and go to the next town!";
         }
     }
 

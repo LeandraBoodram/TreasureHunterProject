@@ -10,7 +10,13 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private int treasureTotal;
+
     private int treasure;
+
+    private int firstTreasure;
+    private int secondTreasure;
+    private int thirdTreasure;
 
     //Constructor
     /**
@@ -22,7 +28,7 @@ public class Town
     {
         this.shop = shop;
         this.terrain = getNewTerrain();
-        this.treasure = 1;
+
 
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
@@ -39,8 +45,8 @@ public class Town
         return printMessage;
     }
 
-    public int getTreasure(){
-        return treasure;
+    public int getTreasureTotal(){
+        return treasureTotal;
     }
 
     /**
@@ -133,20 +139,46 @@ public class Town
     }
 
     public void huntForTreasure(){
-        int noTreasureChance = (int) (Math.random() * 3) + 1;
-        if (noTreasureChance == 1 && treasure == 1){
-
+        int noTreasureChance = (int) (Math.random() * 4) + 1;
+        if (noTreasureChance == 1 && treasure == 1 && treasureTotal < 3){
+            treasureTotal = treasureTotal + 1;
             treasure = treasure - 1;
-        }
-        else if (noTreasureChance == 2 && treasure == 1){
-            treasure = treasure - 1;
+            firstTreasure = firstTreasure + 1;
+            printMessage = "You got Armor! you have " + treasureTotal + " treasure";
+            if (firstTreasure == 2) {
+                printMessage = "You have duplicate treasures, you must discard one armor";
+                firstTreasure = firstTreasure - 1;
+            }
 
         }
-        else if (noTreasureChance == 3 && treasure == 1){
-            printMessage = "You couldn't find any trouble";
+        else if (noTreasureChance == 2 && treasure == 1 && treasureTotal < 3){
+            treasureTotal = treasureTotal + 1;
+            treasure = treasure - 1;
+            secondTreasure = secondTreasure + 1;
+            printMessage = "You got a Book! you have " + treasureTotal + " treasure";
+            if (secondTreasure == 2) {
+                printMessage = "You have duplicate treasures, you must discard one book";
+                secondTreasure = secondTreasure - 1;
+            }
+        }
+        else if (noTreasureChance == 3 && treasure == 1 && treasureTotal < 3){
+            this.treasureTotal = treasureTotal + 1;
+            treasure = treasure - 1;
+            thirdTreasure = thirdTreasure + 1;
+            printMessage = "You got a Diamond Ring! you have " + treasureTotal + " treasure";
+            if (thirdTreasure == 2) {
+                printMessage = "You have duplicate treasures, you must discard one diamond ring";
+                thirdTreasure = thirdTreasure - 1;
+            }
+        }
+        else if (noTreasureChance == 4 && treasure == 1 && treasureTotal < 3){
+            printMessage = "You couldn't find any treasure";
         }
         else if (treasure == 0){
             printMessage = "You must leave and go to the next town!";
+        }
+        else if (treasureTotal < 3){
+            printMessage = "You have found all 3 treasure!";
         }
     }
 

@@ -13,6 +13,7 @@ public class TreasureHunter
     private Hunter hunter;
     private boolean hardMode;
 
+
     //Constructor
     /**
      * Constructs the Treasure Hunter game.
@@ -146,7 +147,7 @@ public class TreasureHunter
         else if (choice.equals("H") || choice.equals("h")){
             currentTown.huntForTreasure();
         }
-        else if (choice.equals("X") || choice.equals("x") || currentTown.getTreasure() == 3)
+        else if (choice.equals("X") || choice.equals("x") || currentTown.getTreasureTotal() == 3)
         {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }

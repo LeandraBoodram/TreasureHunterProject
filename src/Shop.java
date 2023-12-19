@@ -85,12 +85,17 @@ public class Shop
      */
     public String inventory()
     {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
-
+        String reset = "\u001B[0m";
+        String red = "\u001B[31m";
+        String green = "\u001B[32m";
+        String yellow = "\u001B[33m";
+        String blue = "\u001B[34m";
+        String magenta = "\u001B[35m";
+        String str = blue + "Water: " + reset + WATER_COST + " gold\n";
+        str += yellow + "Rope: " + reset + ROPE_COST + " gold\n";
+        str += red + "Machete: " + reset + MACHETE_COST + " gold\n";
+        str += green + "Horse: " + reset + HORSE_COST + " gold\n";
+        str += magenta + "Boat: " + reset + BOAT_COST + " gold\n";
         return str;
     }
 
@@ -154,23 +159,23 @@ public class Shop
      */
     public int getCostOfItem(String item)
     {
-        if (item.equals("Water"))
+        if (item.equals("Water") || item.equals("water"))
         {
             return WATER_COST;
         }
-        else if (item.equals("Rope"))
+        else if (item.equals("Rope") || item.equals("rope"))
         {
             return ROPE_COST;
         }
-        else if (item.equals("Machete"))
+        else if (item.equals("Machete") || item.equals("machete"))
         {
             return MACHETE_COST;
         }
-        else if (item.equals("Horse"))
+        else if (item.equals("Horse") || item.equals("horse"))
         {
             return HORSE_COST;
         }
-        else if (item.equals("Boat"))
+        else if (item.equals("Boat") || item.equals("boat"))
         {
             return BOAT_COST;
         }

@@ -52,7 +52,7 @@ public class TreasureHunter
         String name = scanner.nextLine();
 
         // set hunter instance variable
-        hunter = new Hunter(name, 3);
+        hunter = new Hunter(name, 100);
 
         System.out.print("Hard mode? Easy mode? Normal? (h/e/n): ");
         String mode = scanner.nextLine();

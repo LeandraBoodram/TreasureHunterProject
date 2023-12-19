@@ -150,12 +150,12 @@ public class Town
             treasure = treasure - 1;
             firstTreasure = firstTreasure + 1;
             printMessage = "You got Armor! you have " + treasureTotal + " treasure";
-            if (firstTreasure == 2) {
+            if (firstTreasure == 3) {
                 printMessage = "You have duplicate treasures, you must discard one armor";
                 firstTreasure = firstTreasure - 1;
             }
             if (treasureTotal == 3){
-                printMessage = "You have found all 3 treasure! You have won the game!";
+                System.out.print("You have found all 3 treasure! You have won the game!");
                 System.exit(0);
             }
 
@@ -170,7 +170,7 @@ public class Town
                 secondTreasure = secondTreasure - 1;
             }
             if (treasureTotal == 3){
-                printMessage = "You have found all 3 treasure! You have won the game!";
+                System.out.print("You have found all 3 treasure! You have won the game!");
                 System.exit(0);
             }
         }
@@ -179,7 +179,7 @@ public class Town
             treasure = treasure - 1;
             thirdTreasure = thirdTreasure + 1;
             printMessage = "You got a Diamond Ring! you have " + treasureTotal + " treasure";
-            if (thirdTreasure == 2) {
+            if (thirdTreasure == 1) {
                 printMessage = "You have duplicate treasures, you must discard one diamond ring";
                 thirdTreasure = thirdTreasure - 1;
             }

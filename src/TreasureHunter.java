@@ -69,19 +69,19 @@ public class TreasureHunter
      */
     private void enterTown()
     {
-        double markdown = 0.25;
+        double markdown = 0.6;
         double toughness = 0.4;
         if (hardMode)
         {
             // in hard mode, you get less money back when you sell items
-            markdown = 0.5;
+            markdown = 0.4;
 
             // and the town is "tougher"
             toughness = 0.75;
         }
         else if (easyMode){
-            markdown = 0.2;
-            toughness = 0.05;
+            markdown = 0.9;
+            toughness = 0.1;
         }
 
         // note that we don't need to access the Shop object

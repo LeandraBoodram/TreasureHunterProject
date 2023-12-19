@@ -85,12 +85,17 @@ public class Shop
      */
     public String inventory()
     {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
-
+        String reset = "\u001B[0m";
+        String red = "\u001B[31m";
+        String green = "\u001B[32m";
+        String yellow = "\u001B[33m";
+        String blue = "\u001B[34m";
+        String magenta = "\u001B[35m";
+        String str = blue + "Water: " + reset + WATER_COST + " gold\n";
+        str += yellow + "Rope: " + reset + ROPE_COST + " gold\n";
+        str += red + "Machete: " + reset + MACHETE_COST + " gold\n";
+        str += green + "Horse: " + reset + HORSE_COST + " gold\n";
+        str += magenta + "Boat: " + reset + BOAT_COST + " gold\n";
         return str;
     }
 

@@ -10,7 +10,7 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
-    private int treasureTotal;
+    private static int treasureTotal;
 
     private int treasure;
 
@@ -134,11 +134,16 @@ public class Town
                 printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
                 printMessage += "\nYou lost the brawl and pay " +  goldDiff + " gold.";
                 hunter.changeGold(-1 * goldDiff);
+                if(hunter.getGold() == 0){
+                    System.out.println("Game over, you lost your gold");
+                    System.exit(0);
+                }
             }
         }
+
     }
 
-    public void huntForTreasure(){
+    public void huntForTreasure() throws InterruptedException {
         int noTreasureChance = (int) (Math.random() * 4) + 1;
         if (noTreasureChance == 1 && treasure == 1 && treasureTotal < 3){
             treasureTotal = treasureTotal + 1;
@@ -148,6 +153,10 @@ public class Town
             if (firstTreasure == 2) {
                 printMessage = "You have duplicate treasures, you must discard one armor";
                 firstTreasure = firstTreasure - 1;
+            }
+            if (treasureTotal == 3){
+                printMessage = "You have found all 3 treasure! You have won the game!";
+                System.exit(0);
             }
 
         }
@@ -160,6 +169,10 @@ public class Town
                 printMessage = "You have duplicate treasures, you must discard one book";
                 secondTreasure = secondTreasure - 1;
             }
+            if (treasureTotal == 3){
+                printMessage = "You have found all 3 treasure! You have won the game!";
+                System.exit(0);
+            }
         }
         else if (noTreasureChance == 3 && treasure == 1 && treasureTotal < 3){
             this.treasureTotal = treasureTotal + 1;
@@ -170,16 +183,20 @@ public class Town
                 printMessage = "You have duplicate treasures, you must discard one diamond ring";
                 thirdTreasure = thirdTreasure - 1;
             }
+            if (treasureTotal == 3){
+                System.out.print("Congrats! You got all 3 Treasures! Game over.");
+                //printMessage = "You have found all 3 treasure! You have won the game!";
+                Thread.sleep(1000);
+                System.exit(1);
+            }
         }
         else if (noTreasureChance == 4 && treasure == 1 && treasureTotal < 3){
             printMessage = "You couldn't find any treasure";
         }
-        else if (treasure == 0){
+        else if(treasure == 0){
             printMessage = "You must leave and go to the next town!";
         }
-        else if (treasureTotal < 3){
-            printMessage = "You have found all 3 treasure!";
-        }
+
     }
 
     public String toString()

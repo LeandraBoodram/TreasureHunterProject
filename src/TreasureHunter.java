@@ -27,12 +27,14 @@ public class TreasureHunter
     }
 
     // starts the game; this is the only public method
-    public void play ()
-    {
+    public void play () throws InterruptedException {
         welcomePlayer();
         enterTown();
         showMenu();
+
     }
+
+
 
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
@@ -47,7 +49,7 @@ public class TreasureHunter
         String name = scanner.nextLine();
 
         // set hunter instance variable
-        hunter = new Hunter(name, 10);
+        hunter = new Hunter(name, 3);
 
         System.out.print("Hard mode? (y/n): ");
         String hard = scanner.nextLine();
@@ -95,8 +97,7 @@ public class TreasureHunter
      * The choice is sent to the processChoice() method for parsing.<p>
      * This method will loop until the user chooses to exit.
      */
-    private void showMenu()
-    {
+    private void showMenu() throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
         String choice = "";
 
@@ -118,6 +119,9 @@ public class TreasureHunter
             choice = scanner.nextLine();
             choice = choice.toUpperCase();
             processChoice(choice);
+
+
+
         }
     }
 
@@ -125,8 +129,7 @@ public class TreasureHunter
      * Takes the choice received from the menu and calls the appropriate method to carry out the instructions.
      * @param choice The action to process.
      */
-    private void processChoice(String choice)
-    {
+    private void processChoice(String choice) throws InterruptedException {
         if (choice.equals("B") || choice.equals("b") || choice.equals("S") || choice.equals("s"))
         {
             currentTown.enterShop(choice);

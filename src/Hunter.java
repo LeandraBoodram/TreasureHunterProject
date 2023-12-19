@@ -175,6 +175,10 @@ public class Hunter
         return printableKit;
     }
 
+
+
+
+
     /**
      * @return A string representation of the hunter.
      */

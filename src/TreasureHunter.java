@@ -80,7 +80,7 @@ public class TreasureHunter
             toughness = 0.75;
         }
         else if (easyMode){
-            markdown = 0.125;
+            markdown = 0.2;
             toughness = 0.05;
         }
 

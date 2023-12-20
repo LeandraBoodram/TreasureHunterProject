@@ -49,6 +49,13 @@ public class Hunter
             gold = 0;
         }
     }
+    public void doubleGold(){
+        gold = gold * 2;
+    }
+
+    public void looseGold(){
+        gold = 0;
+    }
 
     /**
      * Buys an item from a shop.

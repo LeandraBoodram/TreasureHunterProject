@@ -12,11 +12,11 @@ public class Town
     private boolean toughTown;
     private static int treasureTotal;
 
-    private int treasure;
+    private static int treasure;
 
-    private int firstTreasure;
-    private int secondTreasure;
-    private int thirdTreasure;
+    private static int firstTreasure;
+    private static int secondTreasure;
+    private static int thirdTreasure;
 
     //Constructor
     /**
@@ -146,45 +146,55 @@ public class Town
     public void huntForTreasure() throws InterruptedException {
         int noTreasureChance = (int) (Math.random() * 4) + 1;
         if (noTreasureChance == 1 && treasure == 1 && treasureTotal < 3){
-            treasureTotal = treasureTotal + 1;
-            treasure = treasure - 1;
-            firstTreasure = firstTreasure + 1;
-            printMessage = "You got Armor! you have " + treasureTotal + " treasure";
-            if (firstTreasure == 3) {
+
+            if (firstTreasure == 2 || firstTreasure == 3) {
                 printMessage = "You have duplicate treasures, you must discard one armor";
                 firstTreasure = firstTreasure - 1;
+            }else{
+                firstTreasure = firstTreasure + 1;
+                treasureTotal = treasureTotal + 1;
+                treasure = treasure - 1;
+                printMessage = "You got Armor! you have " + treasureTotal + " treasure";
             }
             if (treasureTotal == 3){
-                System.out.print("You have found all 3 treasure! You have won the game!");
+                System.out.print("You have found armor and now all 3 treasure! You have won the game!");
                 System.exit(0);
             }
 
         }
         else if (noTreasureChance == 2 && treasure == 1 && treasureTotal < 3){
-            treasureTotal = treasureTotal + 1;
-            treasure = treasure - 1;
-            secondTreasure = secondTreasure + 1;
-            printMessage = "You got a Book! you have " + treasureTotal + " treasure";
-            if (secondTreasure == 2) {
+
+
+
+            if (secondTreasure == 3 || secondTreasure == 1) {
                 printMessage = "You have duplicate treasures, you must discard one book";
                 secondTreasure = secondTreasure - 1;
+            }else{
+                secondTreasure = secondTreasure + 1;
+                treasureTotal = treasureTotal + 1;
+                treasure = treasure - 1;
+                printMessage = "You got a Book! you have " + treasureTotal + " treasure";
             }
             if (treasureTotal == 3){
-                System.out.print("You have found all 3 treasure! You have won the game!");
+                System.out.print("You have now found a book and found all 3 treasure! You have won the game!");
                 System.exit(0);
             }
         }
         else if (noTreasureChance == 3 && treasure == 1 && treasureTotal < 3){
-            this.treasureTotal = treasureTotal + 1;
-            treasure = treasure - 1;
-            thirdTreasure = thirdTreasure + 1;
-            printMessage = "You got a Diamond Ring! you have " + treasureTotal + " treasure";
-            if (thirdTreasure == 1) {
+
+
+
+            if (thirdTreasure == 1 || thirdTreasure == 2) {
                 printMessage = "You have duplicate treasures, you must discard one diamond ring";
                 thirdTreasure = thirdTreasure - 1;
+            }else{
+                thirdTreasure = thirdTreasure + 1;
+                treasureTotal = treasureTotal + 1;
+                treasure = treasure - 1;
+                printMessage = "You got a Diamond Ring! you have " + treasureTotal + " treasure";
             }
             if (treasureTotal == 3){
-                System.out.print("Congrats! You got all 3 Treasures! Game over.");
+                System.out.print("Congrats! You got the diamond ring all 3 Treasure! Game over.");
                 //printMessage = "You have found all 3 treasure! You have won the game!";
                 Thread.sleep(1000);
                 System.exit(1);

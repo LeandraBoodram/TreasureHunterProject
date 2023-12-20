@@ -112,6 +112,7 @@ public class Shop
         if (customer.buyItem(item, costOfItem))
         {
             System.out.println("Ye' got yerself a " + item + ". Come again soon.");
+
         }
         else
         {

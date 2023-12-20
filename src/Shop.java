@@ -40,6 +40,9 @@ public class Shop
             System.out.println(inventory());
             System.out.print("What're you lookin' to buy? ");
             String item = scanner.nextLine();
+            String itemLetter = item.substring(0,1).toUpperCase();
+            String itemEnd = item.substring(1);
+            item = itemLetter + itemEnd;
             int cost = checkMarketPrice(item, true);
             if (cost == 0)
             {

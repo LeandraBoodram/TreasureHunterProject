@@ -14,6 +14,7 @@ public class TreasureHunter
     private boolean hardMode;
 
     private boolean easyMode;
+    public static boolean cheatMode;
 
 
     //Constructor
@@ -27,6 +28,7 @@ public class TreasureHunter
         hunter = null;
         hardMode = false;
         easyMode = false;
+        cheatMode = false;
     }
 
     // starts the game; this is the only public method
@@ -42,7 +44,7 @@ public class TreasureHunter
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
      */
-    private void welcomePlayer()
+    public void welcomePlayer()
     {
         Scanner scanner = new Scanner(System.in);
 
@@ -64,6 +66,10 @@ public class TreasureHunter
         {
             easyMode = true;
         }
+        else if (mode.equals("Z") || mode.equals("z")) {
+            cheatMode = true;
+        }
+
     }
 
     /**
@@ -85,6 +91,7 @@ public class TreasureHunter
             markdown = 0.9;
             toughness = 0.1;
         }
+
 
         // note that we don't need to access the Shop object
         // outside of this method, so it isn't necessary to store it as an instance
@@ -169,5 +176,9 @@ public class TreasureHunter
         {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
+    }
+
+    public static boolean isCheatMode() {
+        return cheatMode;
     }
 }

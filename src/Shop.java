@@ -13,6 +13,12 @@ public class Shop
     private static final int HORSE_COST = 12;
     private static final int BOAT_COST = 20;
 
+    private static final int cheatWATER_COST = 1;
+    private static final int cheatROPE_COST = 1;
+    private static final int cheatMACHETE_COST = 1;
+    private static final int cheatHORSE_COST = 1;
+    private static final int cheatBOAT_COST = 1;
+
     // instance variables
     private double markdown;
     private Hunter customer;
@@ -85,18 +91,33 @@ public class Shop
      */
     public String inventory()
     {
-        String reset = "\u001B[0m";
-        String red = "\u001B[31m";
-        String green = "\u001B[32m";
-        String yellow = "\u001B[33m";
-        String blue = "\u001B[34m";
-        String magenta = "\u001B[35m";
-        String str = blue + "Water: " + reset + WATER_COST + " gold\n";
-        str += yellow + "Rope: " + reset + ROPE_COST + " gold\n";
-        str += red + "Machete: " + reset + MACHETE_COST + " gold\n";
-        str += green + "Horse: " + reset + HORSE_COST + " gold\n";
-        str += magenta + "Boat: " + reset + BOAT_COST + " gold\n";
-        return str;
+        if(TreasureHunter.cheatMode){
+            String reset = "\u001B[0m";
+            String red = "\u001B[31m";
+            String green = "\u001B[32m";
+            String yellow = "\u001B[33m";
+            String blue = "\u001B[34m";
+            String magenta = "\u001B[35m";
+            String str = blue + "Water: " + reset + cheatWATER_COST + " gold\n";
+            str += yellow + "Rope: " + reset + cheatROPE_COST + " gold\n";
+            str += red + "Machete: " + reset + cheatMACHETE_COST + " gold\n";
+            str += green + "Horse: " + reset + cheatHORSE_COST + " gold\n";
+            str += magenta + "Boat: " + reset + cheatBOAT_COST + " gold\n";
+            return str;
+        }else{
+            String reset = "\u001B[0m";
+            String red = "\u001B[31m";
+            String green = "\u001B[32m";
+            String yellow = "\u001B[33m";
+            String blue = "\u001B[34m";
+            String magenta = "\u001B[35m";
+            String str = blue + "Water: " + reset + WATER_COST + " gold\n";
+            str += yellow + "Rope: " + reset + ROPE_COST + " gold\n";
+            str += red + "Machete: " + reset + MACHETE_COST + " gold\n";
+            str += green + "Horse: " + reset + HORSE_COST + " gold\n";
+            str += magenta + "Boat: " + reset + BOAT_COST + " gold\n";
+            return str;
+        }
     }
 
     /**
@@ -160,30 +181,59 @@ public class Shop
      */
     public int getCostOfItem(String item)
     {
-        if (item.equals("Water") || item.equals("water"))
-        {
-            return WATER_COST;
+        if(TreasureHunter.cheatMode){
+            if (item.equals("Water") || item.equals("water"))
+            {
+                return cheatWATER_COST;
+            }
+            else if (item.equals("Rope") || item.equals("rope"))
+            {
+                return cheatROPE_COST;
+            }
+            else if (item.equals("Machete") || item.equals("machete"))
+            {
+                return cheatMACHETE_COST;
+            }
+            else if (item.equals("Horse") || item.equals("horse"))
+            {
+                return cheatHORSE_COST;
+            }
+            else if (item.equals("Boat") || item.equals("boat"))
+            {
+                return cheatBOAT_COST;
+            }
+            else
+            {
+                return 0;
+            }
+        }else{
+            if (item.equals("Water") || item.equals("water"))
+            {
+                return WATER_COST;
+            }
+            else if (item.equals("Rope") || item.equals("rope"))
+            {
+                return ROPE_COST;
+            }
+            else if (item.equals("Machete") || item.equals("machete"))
+            {
+                return MACHETE_COST;
+            }
+            else if (item.equals("Horse") || item.equals("horse"))
+            {
+                return HORSE_COST;
+            }
+            else if (item.equals("Boat") || item.equals("boat"))
+            {
+                return BOAT_COST;
+            }
+            else
+            {
+                return 0;
+            }
         }
-        else if (item.equals("Rope") || item.equals("rope"))
-        {
-            return ROPE_COST;
-        }
-        else if (item.equals("Machete") || item.equals("machete"))
-        {
-            return MACHETE_COST;
-        }
-        else if (item.equals("Horse") || item.equals("horse"))
-        {
-            return HORSE_COST;
-        }
-        else if (item.equals("Boat") || item.equals("boat"))
-        {
-            return BOAT_COST;
-        }
-        else
-        {
-            return 0;
-        }
+
+
     }
 
     /**

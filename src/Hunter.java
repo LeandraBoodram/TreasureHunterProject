@@ -49,12 +49,14 @@ public class Hunter
             gold = 0;
         }
     }
-    public void doubleGold(){
-        gold = gold * 2;
+    public void addGold(int wagered){
+
+        gold = gold + wagered;
     }
 
-    public void looseGold(){
-        gold = 0;
+    public void looseGold(int wagered){
+
+        gold = gold - wagered;
     }
 
     /**

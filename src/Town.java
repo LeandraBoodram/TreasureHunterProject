@@ -221,26 +221,33 @@ public class Town
     public void goToCasino() {
         if (hunter.getGold() > 0) {
             Scanner scanner = new Scanner(System.in);
-            //int rollOne = (int) (Math.random() * 6) - 1;
-            //int rollTwo = (int) (Math.random() * 6) - 1;
-           // int number = rollOne + rollTwo;
-            int number = 6;
-            System.out.print("Pick a number between 1 and 12: ");
-            int guess = Integer.parseInt(scanner.nextLine());
+            System.out.println("How much gold do you want to wager? ");
+            int wager = Integer.parseInt(scanner.nextLine());
+            if (wager <= hunter.getGold()) {
+                //int rollOne = (int) (Math.random() * 6) - 1;
+                //int rollTwo = (int) (Math.random() * 6) - 1;
+                // int number = rollOne + rollTwo;
+                int number = 6;
+                System.out.print("Pick a number between 1 and 12: ");
+                int guess = Integer.parseInt(scanner.nextLine());
                 int checkNumGreater = number - guess;
                 int checkGuessGreater = guess - number;
                 if (guess == number) {
-                    System.out.println("Congratulations! your gold has doubled!!");
-                    hunter.doubleGold();
+                    System.out.println("Congratulations! your wager gold has doubled and been added!!");
+                    wager = wager * 2;
+                    hunter.addGold(wager);
                 } else if ((checkNumGreater <= 2) && (checkGuessGreater <= 2)) {
                     System.out.println("Since your guesses were within two or the number, your gold is untouched");
-                } else if ((checkNumGreater > 2) || (checkGuessGreater > 2)){
-                    System.out.println("Your gold is more than two numbers away, you loose all your gold!");
-                    hunter.looseGold();
-                }
-                else{
+                } else if ((checkNumGreater > 2) || (checkGuessGreater > 2)) {
+                    System.out.println("Your gold is more than two numbers away, you loose all the gold you wagered!");
+                    hunter.looseGold(wager);
+                } else {
                     System.out.println("Invalid input please put a number between 1 and 12");
                 }
+            }
+            else{
+                System.out.println("You cannot wager more than you have!");
+            }
             }
         else{
             System.out.println("You can only enter if you have gold!");

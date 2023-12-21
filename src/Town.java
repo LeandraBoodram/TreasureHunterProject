@@ -20,6 +20,8 @@ public class Town
     private static int secondTreasure;
     private static int thirdTreasure;
 
+    private int luck;
+
     //Constructor
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -236,11 +238,21 @@ public class Town
                     System.out.println("Congratulations! your wager gold has doubled and been added!!");
                     wager = wager * 2;
                     hunter.addGold(wager);
+                    if ((wager / 2) >= 10){
+                        int luckAdded = ((wager / 2) / 10) * 2;
+                        System.out.println("Your luck has went up by " + luckAdded + "%");
+                        luck = luck + luckAdded;
+                    }
                 } else if ((checkNumGreater <= 2) && (checkGuessGreater <= 2)) {
                     System.out.println("Since your guesses were within two or the number, your gold is untouched");
                 } else if ((checkNumGreater > 2) || (checkGuessGreater > 2)) {
                     System.out.println("Your gold is more than two numbers away, you loose all the gold you wagered!");
                     hunter.looseGold(wager);
+                    if (wager >= 10) {
+                        int luckLost = (wager / 10) * 2;
+                        System.out.println("Your luck has went down by " + luckLost + "%");
+                        luck = luck - luckLost;
+                    }
                 } else {
                     System.out.println("Invalid input please put a number between 1 and 12");
                 }

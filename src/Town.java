@@ -214,25 +214,31 @@ public class Town
     public void goToCasino() {
         if (hunter.getGold() > 0) {
             Scanner scanner = new Scanner(System.in);
-            int rollOne = (int) (Math.random() * 6) - 1;
-            int rollTwo = (int) (Math.random() * 6) - 1;
-            int number = rollOne + rollTwo;
+            //int rollOne = (int) (Math.random() * 6) - 1;
+            //int rollTwo = (int) (Math.random() * 6) - 1;
+           // int number = rollOne + rollTwo;
+            int number = 6;
             System.out.print("Pick a number between 1 and 12: ");
             int guess = Integer.parseInt(scanner.nextLine());
-            if (guess == number) {
-                System.out.println("Congratulations! your gold has doubled!!");
-                hunter.doubleGold();
-            } else if ((number - guess <= 2) || (guess - number <= 2)) {
-                System.out.println("Since your guesses were within two or the number, your gold is untouched");
-            } else if (!(number - guess <= 2) || !(guess - number <= 2)) {
-                System.out.println("Your gold is more than two numbers away, you loose all your gold!");
-                hunter.looseGold();
-
-            } else {
-                System.out.println("You have no gold, you cannot enter!");
+                int checkNumGreater = number - guess;
+                int checkGuessGreater = guess - number;
+                if (guess == number) {
+                    System.out.println("Congratulations! your gold has doubled!!");
+                    hunter.doubleGold();
+                } else if ((checkNumGreater <= 2) && (checkGuessGreater <= 2)) {
+                    System.out.println("Since your guesses were within two or the number, your gold is untouched");
+                } else if ((checkNumGreater > 2) || (checkGuessGreater > 2)){
+                    System.out.println("Your gold is more than two numbers away, you loose all your gold!");
+                    hunter.looseGold();
+                }
+                else{
+                    System.out.println("Invalid input please put a number between 1 and 12");
+                }
             }
+        else{
+            System.out.println("You can only enter if you have gold!");
         }
-    }
+        }
 
     public String toString()
     {

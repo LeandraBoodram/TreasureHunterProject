@@ -19,8 +19,9 @@ public class Town
     private static int firstTreasure;
     private static int secondTreasure;
     private static int thirdTreasure;
+    public static int luck;
 
-    private int luck;
+
 
     //Constructor
     /**
@@ -156,6 +157,9 @@ public class Town
 
     public void huntForTreasure() throws InterruptedException {
         int noTreasureChance = (int) (Math.random() * 4) + 1;
+        if ((luck > 10) && noTreasureChance == 4){
+            noTreasureChance-=1;
+        }
         if (noTreasureChance == 1 && treasure == 1 && treasureTotal < 3){
 
             if (firstTreasure == 2 || firstTreasure == 3) {
@@ -225,11 +229,11 @@ public class Town
             Scanner scanner = new Scanner(System.in);
             System.out.println("How much gold do you want to wager? ");
             int wager = Integer.parseInt(scanner.nextLine());
+            int wagerStart = wager;
             if (wager <= hunter.getGold()) {
-                //int rollOne = (int) (Math.random() * 6) - 1;
-                //int rollTwo = (int) (Math.random() * 6) - 1;
-                // int number = rollOne + rollTwo;
-                int number = 6;
+                int rollOne = (int) (Math.random() * 6) - 1;
+                int rollTwo = (int) (Math.random() * 6) - 1;
+                int number = rollOne + rollTwo;
                 System.out.print("Pick a number between 1 and 12: ");
                 int guess = Integer.parseInt(scanner.nextLine());
                 int checkNumGreater = number - guess;
@@ -264,6 +268,7 @@ public class Town
         else{
             System.out.println("You can only enter if you have gold!");
         }
+
         }
 
     public String toString()

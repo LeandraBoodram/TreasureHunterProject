@@ -127,9 +127,16 @@ public class Town
             int goldDiff = (int)(Math.random() * 10) + 1;
             if (Math.random() > noTroubleChance)
             {
-                printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
-                printMessage += "\nYou won the brawl and receive " +  goldDiff + " gold.";
-                hunter.changeGold(goldDiff);
+                if(TreasureHunter.cheatMode){
+                    int cheatGoldDiff = 100;
+                    printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
+                    printMessage += "\nYou won the brawl and receive " +  cheatGoldDiff + " gold.";
+                    hunter.changeGold(cheatGoldDiff);
+                }else{;
+                    printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
+                    printMessage += "\nYou won the brawl and receive " +  goldDiff + " gold.";
+                    hunter.changeGold(goldDiff);
+                }
             }
             else
             {
